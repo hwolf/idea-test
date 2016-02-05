@@ -1,0 +1,34 @@
+
+plugins {
+    id "org.unbroken-dome.test-sets" version "1.2.0"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.unbroken-dome.test-sets'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+    }
+
+    testSets {
+        integrationTest {
+            dirName = 'test-integration'
+        }
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.12'
+        testCompile 'commons-io:commons-io:2.4'
+        integrationTestCompile 'junit:junit:4.12'
+        integrationTestCompile 'commons-io:commons-io:2.4'
+    }
+}
